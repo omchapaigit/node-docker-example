@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+	name: ${TOMCAT_DEPLOYMENT_NAME}
+spec:
+	replicas: 1
+  selector:
+    matchLabels:
+      app: ${TOMCAT_DEPLOYMENT_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${TOMCAT_DEPLOYMENT_NAME}
+    spec:
+      containers:
+      - name: ${TOMCAT_DEPLOYMENT_NAME}
+        image: omchapaid/nodejs:R3
+        ports:
+        - containerPort: 8080
